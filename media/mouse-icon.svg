@@ -1,0 +1,5 @@
+<svg id="mouse-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <path id="Path_4202" data-name="Path 4202" d="M0,0H40V40H0Z" fill="none"/>
+  <path id="Path_4203" data-name="Path 4203" d="M6,3,6,9.667A6.667,6.667,0,0,1,12.667,3h6.667A6.667,6.667,0,0,1,26,9.667V26.333A6.667,6.667,0,0,1,19.333,33H12.667A6.667,6.667,0,0,1,6,26.333Z" transform="translate(4 2)" fill="none" stroke="#543e3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_4204" data-name="Path 4204" d="M12,7v6.667" transform="translate(8 4.667)" fill="none" stroke="#543e3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>
