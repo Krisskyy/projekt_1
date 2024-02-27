@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body {
-    background: linear-gradient(223deg, #DEC1BCFC 0%, #E7D3CEFD 39%, #FBF9F5 100%), #FBF9F5;
-    background-blend-mode: overlay;
-    background-position: 0% 0%, 0% 0%;
-    background-repeat: no-repeat, no-repeat;
-    background-size: cover, cover;
-  }
-
 
 *{
     box-sizing: border-box;
@@ -33,6 +25,7 @@ body{
     background: #FBF9F5 0% 0% no-repeat padding-box;
 
 }
+
 /* CSS do headera */
 header{
     display: flex;
@@ -98,3 +91,5 @@ header a:first-of-type{
     letter-spacing: 0.21px;
     cursor: pointer;
 }
+
+/* Dalsza część */
