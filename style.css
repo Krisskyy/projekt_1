@@ -19,11 +19,16 @@ body{
 }
 
 .container{
-    position: fixed;
     max-width: 1920px;
-    height: 1080px;
     background: #FBF9F5 0% 0% no-repeat padding-box;
 
+}
+/* Pierwsza strona */
+
+.firstpage{
+    background: #FBF9F5 0% 0% no-repeat padding-box;
+    max-width: 1920px;
+    height: 1080px;
 }
 
 /* CSS do headera */
@@ -32,6 +37,7 @@ header{
     height: 110px;
     border-bottom: 1px solid #DDC1BC;
     align-items: center;
+    background: transparent linear-gradient(223deg, #DEC1BCFC 0%, #E7D3CEFD 39%, #FBF9F5 100%) 0% 0% no-repeat padding-box;
 }
 
 header a{
@@ -50,9 +56,6 @@ header a:first-of-type{
 }
 
 /* CSS do pierwszej strony */
-.firstpage{
-    opacity: 1;
-}
 
 .banner{
     display: flex;
@@ -91,5 +94,20 @@ header a:first-of-type{
     letter-spacing: 0.21px;
     cursor: pointer;
 }
+
+
+.round{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #E1B9B5 0% 0% no-repeat padding-box;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    margin-top: 304px;
+}
+
+
 
 /* Dalsza część */
