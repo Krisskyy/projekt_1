@@ -25,6 +25,7 @@ body{
     background: #FBF9F5 0% 0% no-repeat padding-box;
 
 }
+
 /* CSS do headera */
 header{
     display: flex;
@@ -90,3 +91,5 @@ header a:first-of-type{
     letter-spacing: 0.21px;
     cursor: pointer;
 }
+
+/* Dalsza część */
