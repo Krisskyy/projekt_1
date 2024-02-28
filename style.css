@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 *{
     box-sizing: border-box;
@@ -20,14 +20,7 @@ body{
 
 .container{
     max-width: 1920px;
-
-}
-/* Pierwsza strona */
-
-.firstpage{
-    background: #FBF9F5 0% 0% no-repeat padding-box;
-    max-width: 1920px;
-    height: 1080px;
+    display: none;
 }
 
 /* CSS do headera */
@@ -55,6 +48,11 @@ header a:first-of-type{
 
 /* CSS do pierwszej strony */
 
+.firstPage{
+    background: #FBF9F5 0% 0% no-repeat padding-box;
+    max-width: 1920px;
+    height: 1080px;
+}
 
 .banner{
     display: flex;
@@ -83,7 +81,7 @@ header a:first-of-type{
     margin-bottom: 50px;
 }
 
-.left input, .secondpage input, .thirdpage input{
+.left input, .secondPage input, .thirdPage input{
     background: #E1B9B5 0% 0% no-repeat padding-box;
     color: #543E3C;
     border: none;
@@ -111,7 +109,7 @@ header a:first-of-type{
 
 /* Druga strona */
 
-.secondpage{
+.secondPage{
     height: 918px;
     margin-top: 100px;
 }
@@ -144,13 +142,13 @@ header a:first-of-type{
     margin-right: 87px;
 }
 
-.secondpage input, .thirdpage input{
+.secondPage input, .thirdPage input{
     display: flex;
     margin: auto;
     margin-top: 50px;
 }
 
-.secondpage a{
+.secondPage a{
     display: flex;
     text-align: left;
     text-decoration: underline;
@@ -182,13 +180,13 @@ header a:first-of-type{
     margin-top: 120px;
 }
 
-.cardtext{
+.cardText{
     margin-top: 30px;
     margin-left: 35px;
     margin-bottom: 10px;
 }
 
-.cardtextmargin{
+.cardTextMargin{
     margin-top: 24px;
 }
 
@@ -212,13 +210,13 @@ header a:first-of-type{
 
 /* Trzecia strona */
 
-.thirdpage{
+.thirdPage{
     background: #FBF9F5 0% 0% no-repeat padding-box;
     height: 723px;
     padding-bottom: 100px;
 }
 
-.thirdpage h2{
+.thirdPage h2{
     font: normal normal bold 48px/83px Poppins;
     color: #543E3C;
     text-transform: capitalize;
@@ -273,20 +271,20 @@ header a:first-of-type{
     border-bottom: 143px solid transparent;
 }
 
-.boxheader{
+.boxHeader{
     display: flex;
     align-items: center;
     margin: 30px 0 50px 35px;
 }
 
-.boxheader h3{
+.boxHeader h3{
     font: normal normal medium 35px/40px Poppins;
     color: #543E3C;
     font-size: 35px;
 }
 
 
-.boxround{
+.boxRound{
     display: flex;
     background: #DDC1BC 0% 0% no-repeat padding-box;
     width: 96px;
@@ -298,7 +296,7 @@ header a:first-of-type{
 }
 
 
-.boxtext{
+.boxText{
     margin: 0 0 30px 35px;
     font: normal normal bold 28px/40px Poppins;
     color: #2D645A;
@@ -315,4 +313,133 @@ footer p, .footerimg{
 
 footer{
     padding: 66px;
+}
+
+
+
+/* Modale */
+
+.containerModal{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: relative;
+
+    width: 1920px;
+    height: 100vh;
+}
+
+.modalLogo{
+    padding: 40px 0 0 303px;
+}
+
+.modal-content{
+    position: absolute;
+    z-index: 1;
+    width: 1088px;
+    height: 600px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 60px #101E0033;
+    border-radius: 20px;
+    top: 180px;
+    left: 416px;
+    padding: 40px 40px 40px 35px;
+}
+
+.modal-content h2{
+    color: #2D635A;
+    font: normal normal normal 38px/51px Abril Fatface;
+}
+
+.modal-content h3{
+    color: #E1B9B5;
+    font: normal normal 600 21px/28px Poppins;
+    margin-bottom: 19px;
+}
+
+.modal-content h4{
+    font: normal normal medium 20px/26px Poppins;
+    margin-bottom: 48px;
+}
+
+.answer{
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 75px;
+    margin-bottom: 20px;
+}
+
+.answer img{
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+.answer p{
+    color: white;
+    font: normal normal bold 24px/26px Roboto;
+    margin: 0 56px 0 26px;
+}
+
+.answer input{
+    border: 2px solid #EAEAEA;
+    border-radius: 10px;
+    width: 909px;
+    background: #FFFFFF;
+    padding: 10px;
+    text-align: left;
+    font-family: 'Poppins';
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.next_question{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #E1B9B5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 40px;
+    width: 256px;
+    height: 61px;
+    padding: 18px 32px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.submit p{
+    margin-right: 18px;
+    font: normal normal medium 18px/27px Poppins;
+    color: #543E3C;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back{
+    display: flex;
+    width: 190px;
+    height: 19px;
+    font: normal normal medium 16px/19px Roboto;
+    letter-spacing: 0px;
+    color: #E1B9B5;
+    cursor: pointer;
+}
+
+.back p{
+    margin-left: 15px;
+}
+
+.dNone{
+    display: none;
 }
