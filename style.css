@@ -563,3 +563,46 @@ footer{
 .next_page{
     margin: 0 0 15px 0px
 }
+
+.button-nps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.npsHeader{
+    position: relative;
+    width: 1008px;
+    height: 116px;
+    background: #DDC1BC 0% 0% no-repeat padding-box;
+}
+
+.npsHeader h2{
+    position: absolute;
+    top: 38px;
+    left: 425px;
+
+    font: normal normal 600 26px/36px Poppins;
+    letter-spacing: 0px;
+    color: #543E3C;
+}
+
+.npsHeader img{
+    margin: 46px 0 44px 44px
+}
+
+.rest{
+    text-align: center;
+}
+
+.rest img{
+    margin-top: 88px;
+}
+
+.rest h3{
+    font: normal normal normal 28px/42px Poppins;
+    margin-top: 31px;
+    color: #070707;
+}
+
+
