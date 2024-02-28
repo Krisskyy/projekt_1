@@ -1,0 +1,7 @@
+<svg id="footer-icon" xmlns="http://www.w3.org/2000/svg" width="26.75" height="24" viewBox="0 0 26.75 24">
+  <path id="Path_4661" data-name="Path 4661" d="M0,0H24V24H0Z" fill="none"/>
+  <g id="Group_1313" data-name="Group 1313">
+    <path id="Path_4662" data-name="Path 4662" d="M12,12,3,12a9,9,0,1,0,9-9,9,9,0,0,0-9,9" transform="translate(5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <text id="c" transform="translate(13 16)" font-size="13" font-family="Poppins-SemiBold, Poppins" font-weight="600"><tspan x="0" y="0">c</tspan></text>
+  </g>
+</svg>
