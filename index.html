@@ -127,7 +127,7 @@
         </div>
 
         <form action="" method="post">
-            <div class="modal-content">
+            <div class="modal-content dNone">
                 <h2>Wiosna nadchodzi - konkurs Mediaflex</h2>
                 <h3>Pytanie 1/3</h3>
                 <h4>W którym roku powstal Mediaflex?</h4>
@@ -137,7 +137,7 @@
                         <div class="answer"><img src="./media/flower-icon.svg" alt="Flower Icon"> <p>B</p> <input type="button" value="2008"></div>
                         <div class="answer"><img src="./media/flower-icon.svg" alt="Flower Icon"> <p>C</p> <input type="button" value="2009"></div>
                         <div class="next_question">
-                            <div class="submit"><p>Następne Pytanie</p> <img src="./media/next-icon.svg" alt="Next Icon"></div>
+                            <div class="submit"><p class="paragraph">Następne Pytanie</p> <img src="./media/next-icon.svg" alt="Next Icon"></div>
                         </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                             </div>
     
                             <div class="next_question">
-                                <div class="submit"><p>Następne Pytanie</p> <img src="./media/next-icon.svg" alt="Next Icon"></div>
+                                <div class="submit"><p class="paragraph">Następne Pytanie</p> <img src="./media/next-icon.svg" alt="Next Icon"></div>
                             </div>
                         </div>
                 </div>
@@ -174,10 +174,49 @@
                         <div class="answer"><img src="./media/flower-icon.svg" alt="Flower Icon"> <p>B</p> <input type="button" value="Szczecinie"></div>
                         <div class="answer"><img src="./media/flower-icon.svg" alt="Flower Icon"> <p>C</p> <input type="button" value="Rzeszowie"></div>
                         <div class="next_question">
-                            <div class="submit"><p>Zakończ Quiz</p> <img src="./media/next-icon.svg" alt="Next Icon"></div>
+                            <div class="submit"><p>Zakończ Quiz</p></div>
                         </div>
                 </div>
             </div>
+
+            <div class="modal-content score ">
+                <h2>Wiosna nadchodzi - konkurs Mediaflex</h2>
+                <h3>Dziękujemy za grę!</h3>
+                <h4>Twój wynik: &nbsp <span> 300/500</span></h4>
+                <p class="par">Aby grać o nagrody - zaakceptuj zgody i napisz swój wynik</p>
+                <div class="images">
+                    <img src="./media/prize-one.png" alt="Prize one icon">
+                    <img src="./media/prize-two.png" alt="Prize two icon">
+                    <img src="./media/prize-three.png" alt="Price three icon">
+
+                    <div class="scoreRound"></div>
+                </div>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td></span><input type="checkbox" name="all" id="all"></td> <td><label for="all"> Zaznacz wszystkie zgody</label></td>   
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="rules" id="rules"></td> <td><label for="rules"> * Akceptuję <a href="#">regulamin konkursu</a></label></td>   
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="data" id="data"></td> <td><label for="data"> Zgoda na przetwarzanie danych osobowych dla celów konkursu</label></td>   
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="dataTwo" id="dataTwo"></td> <td><label for="dataTwo"> * Wyrażam zgodę na przetwarzanie podanych przeze mnie moich danych osobowych w zakresie imię, nazwisko, adres e-mail, numer PWZ, numer telefonu przez Administratora w celu organizacji i realizacji Konkursu.</label></td>   
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Klauzula informacyjna RODO <a href="#">czytaj więcej</a></p>
+                <p>* Pola obowiązkowe są oznaczone gwiazdką</p>
+
+                <div class="next_page">
+                    <div class="submit"><p>Zakończ Quiz</p></div>
+                </div>
+            </div>
+
+
         </form>
     </div>
 
