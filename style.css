@@ -397,7 +397,7 @@ footer{
 
 .next_question{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     
 }
 
@@ -756,4 +756,13 @@ footer{
 
 .borderclick{
     border: 3px solid #E1B9B5;
+}
+
+.alert_one, .alert_two, .alert_three{
+    visibility: hidden;
+    color: red;
+}
+
+.invisible{
+    visibility: hidden;
 }

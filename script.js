@@ -9,6 +9,9 @@ let back_buttons = document.querySelectorAll('.back_button');
 let final_result = document.querySelector('.final_result');
 let checkall = document.querySelector('.checkall')
 let checks = document.querySelectorAll('.check');
+let alert_one = document.querySelector('.alert_one');
+let alert_two = document.querySelector('.alert_two');
+let alert_three = document.querySelector('.alert_three');
 
 let score = 0;
 
@@ -58,7 +61,7 @@ next_button_one.addEventListener('click', () =>{
     });
 
     if(!inputs_one[0].classList.contains('borderclick') && !inputs_one[1].classList.contains('borderclick') && !inputs_one[2].classList.contains('borderclick')) {
-        alert("Prosimy o zaznaczenie odpowiedzi!");
+        alert_one.style.visibility = 'visible';
     }
 
     if(inputs_one[2].classList.contains('borderclick')){
@@ -103,7 +106,7 @@ next_button_two.addEventListener('click', () =>{
     });
 
     if(!inputs_two[0].classList.contains('borderclick') && !inputs_two[1].classList.contains('borderclick') && !inputs_two[2].classList.contains('borderclick')) {
-        alert("Prosimy o zaznaczenie odpowiedzi!");
+        alert_two.style.visibility = 'visible';
     }
 
     if(inputs_two[1].classList.contains('borderclick')){
@@ -147,7 +150,7 @@ next_button_three.addEventListener('click', () =>{
     });
 
     if(!inputs_three[0].classList.contains('borderclick') && !inputs_three[1].classList.contains('borderclick') && !inputs_three[2].classList.contains('borderclick')) {
-        alert("Prosimy o zaznaczenie odpowiedzi!");
+        alert_three.style.visibility = 'visible';
         
     }
 
