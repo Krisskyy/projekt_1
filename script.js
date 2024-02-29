@@ -55,6 +55,7 @@ next_button_one.addEventListener('click', () =>{
                     modals[i].classList.add('dNone');
                     modals[i + 1].classList.remove('dNone');
                     temp = 1;
+
                 }
             }
         }   
@@ -62,10 +63,8 @@ next_button_one.addEventListener('click', () =>{
 
     if(!inputs_one[0].classList.contains('borderclick') && !inputs_one[1].classList.contains('borderclick') && !inputs_one[2].classList.contains('borderclick')) {
         alert_one.style.visibility = 'visible';
-    }
-
-    if(inputs_one[2].classList.contains('borderclick')){
-        score++;
+    } else{
+        alert_one.style.visibility = 'hidden';
     }
 })
 
@@ -107,10 +106,8 @@ next_button_two.addEventListener('click', () =>{
 
     if(!inputs_two[0].classList.contains('borderclick') && !inputs_two[1].classList.contains('borderclick') && !inputs_two[2].classList.contains('borderclick')) {
         alert_two.style.visibility = 'visible';
-    }
-
-    if(inputs_two[1].classList.contains('borderclick')){
-        score++;
+    }else{
+        alert_two.style.visibility = 'hidden';
     }
 })
 
@@ -144,6 +141,8 @@ next_button_three.addEventListener('click', () =>{
                     modals[i].classList.add('dNone');
                     modals[i + 1].classList.remove('dNone');
                     temp = 1;
+
+                    alert_three.style.visibility = 'invisible';
                 }
             }
         }   
@@ -151,7 +150,16 @@ next_button_three.addEventListener('click', () =>{
 
     if(!inputs_three[0].classList.contains('borderclick') && !inputs_three[1].classList.contains('borderclick') && !inputs_three[2].classList.contains('borderclick')) {
         alert_three.style.visibility = 'visible';
-        
+    } else{
+        alert_three.style.visibility = 'hidden';
+    }
+
+    if(inputs_one[2].classList.contains('borderclick')){
+        score++;
+    }
+
+    if(inputs_two[1].classList.contains('borderclick')){
+        score++;
     }
 
     if(inputs_three[0].classList.contains('borderclick')){

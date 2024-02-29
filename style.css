@@ -397,8 +397,12 @@ footer{
 
 .next_question{
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: flex-end;
+    width: 33%;
+}
+
+.last_question{
+    width: 33%;
 }
 
 .submit{
@@ -761,8 +765,11 @@ footer{
 .alert_one, .alert_two, .alert_three{
     visibility: hidden;
     color: red;
+    width: 33%;
+    text-align: center;
 }
 
 .invisible{
     visibility: hidden;
+    width: 33%;
 }
