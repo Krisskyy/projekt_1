@@ -141,8 +141,6 @@ next_button_three.addEventListener('click', () =>{
                     modals[i].classList.add('dNone');
                     modals[i + 1].classList.remove('dNone');
                     temp = 1;
-
-                    alert_three.style.visibility = 'invisible';
                 }
             }
         }   
@@ -152,19 +150,21 @@ next_button_three.addEventListener('click', () =>{
         alert_three.style.visibility = 'visible';
     } else{
         alert_three.style.visibility = 'hidden';
+
+        if(inputs_one[2].classList.contains('borderclick')){
+            score++;
+        }
+    
+        if(inputs_two[1].classList.contains('borderclick')){
+            score++;
+        }
+    
+        if(inputs_three[0].classList.contains('borderclick')){
+            score++;
+        }
     }
 
-    if(inputs_one[2].classList.contains('borderclick')){
-        score++;
-    }
 
-    if(inputs_two[1].classList.contains('borderclick')){
-        score++;
-    }
-
-    if(inputs_three[0].classList.contains('borderclick')){
-        score++;
-    }
 
     final_result.innerHTML = score + "/3";
 })
