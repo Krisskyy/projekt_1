@@ -43,7 +43,7 @@ function button_click(number) {
 
         points = (number == 'two' && inputs[1].classList.contains('border-click')) ? (points >= 1 ? 2 : 1) : (number == 'two' ? (points >= 1 ? 1 : 0) : points);
         
-        points = (number == 'three' && inputs[0].classList.contains('border-click')) ? (points >= 2 ? 3 : points == 1 ? 2 : 1) : (number == 'three' ? (points >= 1 ? 1 : 0) : points);
+        points = (number == 'three' && inputs[0].classList.contains('border-click')) ? (points >= 2 ? 3 : points == 1 ? 2 : 1) : (number === 'three' ? (points >= 2 ? 2 : points >= 1 ? 1 : 0) : points);
         
     }
     span = document.querySelector('.final-result').innerText = `${points}/3`;
@@ -94,3 +94,16 @@ checkall.addEventListener('click', () =>{
         }
     });
 })
+
+// Przycisk submit ankiety
+document.getElementById("survey-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+            let temp = 0;
+            for(let i = 0; i < modals.length; i++) {
+                if(!modals[i].classList.contains('d-none') && temp === 0) {
+                    modals[i].classList.add('d-none')
+                    modals[i + 1].classList.remove('d-none')
+                    temp = 1;
+                }
+            }
+});

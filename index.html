@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -126,7 +126,7 @@
             <img src="./media/logo.svg" alt="Logo">
         </div>
 
-        <form action="" method="post">
+        <form action="" method="post" id="survey-form">
             <div class="modal-content">
                 <h2>Wiosna nadchodzi - konkurs Mediaflex</h2>
                 <h3 class="h3-margin">Pytanie 1/3</h3>
@@ -231,65 +231,14 @@
         </form>
 
 
-        <div class="modal-content nps-start d-none">
-            <!-- <div class="nps-header">
-                <div class="nps-img-header">
-                    <img src="./media/logo.svg" alt="Logo">
-                </div>
-                <h2>Ankieta NPS</h2>
-            </div>
-            <div class="rest">
-                <img src="./media/thank-you-icon.svg" alt="thank you icon">
-                <h3>Zachęcamy do udziału w ankiecie</h3>
+        <div class="modal-content survey-nps-conn d-none">
 
-                <div class="next-page button-nps">
-                    <div class="submit"><p>Wypełnij Ankietę</p></div>
-                </div>
-            </div> -->
+            <mfx-questionnaire id="questionnaire"
+            props ='{"name":"","surname":"","pharmaPassID":"","npwz":"","questionnaireId":""}'>
+            </mfx-questionnaire>
+            <script src="https://devcdnankiety.mediaflex.com.pl/client-tag/client.js"></script>
+            <script src="./quest_survey.js"></script>
         </div>
-
-        <div class="modal-content nps-start-survey d-none">
-
-            <!-- <div class="nps-header">
-                <div class="nps-img-header">
-                    <img src="./media/logo.svg" alt="Logo">
-                </div>
-                <h2>Ankieta NPS</h2>
-            </div>
-
-            <div class="nps-survey-line">
-                <p>1/1</p>
-                <div class="line-nps"></div>
-                <p>100%</p>
-            </div>
-            <div class="nps-rest">
-                <h3>OCENA KURSU</h3>
-                <h4>Jak bardzo prawdopodobne jest, że polecisz konkurs innej osobie?</h4>
-                <p>
-                    <span>0 - mało prawdopodobne</span>
-                    <span>10 - bardzo prawdopodobne</span>
-                </p>
-
-                <div class="nps-boxes">
-                    <div class="nps-box">0</div>
-                    <div class="nps-box">1</div>
-                    <div class="nps-box">2</div>
-                    <div class="nps-box">3</div>
-                    <div class="nps-box">4</div>
-                    <div class="nps-box">5</div>
-                    <div class="nps-box">6</div>
-                    <div class="nps-box">7</div>
-                    <div class="nps-box">8</div>
-                    <div class="nps-box">9</div>
-                    <div class="nps-box">10</div>
-                </div>
-                <h5>Co możemy zrobić, aby poprawić jakość konkursu?</h5>
-                <input type="text" name="" id="" placeholder="Opisz w jednym zdaniu">
-                <div class="next-question">
-                    <input class="nps-button-submit" type="submit" value="WYŚLIJ">
-                </div>
-            </div>-->
-        </div> 
     </div>
 
     <script src="./script.js"></script>
