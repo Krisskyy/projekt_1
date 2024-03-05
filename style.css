@@ -36,7 +36,7 @@ header{
 }
 
 header a{
-    font-family: normal normal 18px/35px 'Poppins';
+    font: normal normal 18px/35px 'Poppins';
     text-decoration: none;
     color: black;
 }
