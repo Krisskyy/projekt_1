@@ -126,7 +126,7 @@
             <img src="./media/logo.svg" alt="Logo">
         </div>
 
-        <form action="" method="post" id="survey-form">
+
             <div class="modal-content">
                 <h2>Wiosna nadchodzi - konkurs Mediaflex</h2>
                 <h3 class="h3-margin">Pytanie 1/3</h3>
@@ -193,6 +193,7 @@
             </div>
 
             <div class="modal-content score d-none">
+              <form action="score.php" method="post">
                 <h2>Wiosna nadchodzi - konkurs Mediaflex</h2>
                 <h3>Dziękujemy za grę!</h3>
                 <h4>Twój wynik: &nbsp <span class="final-result"> 300/500</span></h4>
@@ -223,22 +224,12 @@
                 </table>
                 <p>Klauzula informacyjna RODO <a href="#">czytaj więcej</a></p>
                 <p>* Pola obowiązkowe są oznaczone gwiazdką</p>
-
+                <input type="hidden" name="score" value="0" class="final-result-input">
                 <div class="next-page">
                     <button class="end-button" type="submit"><div><p>Zakończ Quiz</p></div></button>
                 </div>
+              </form>
             </div>
-        </form>
-
-
-        <div class="modal-content survey-nps-conn d-none">
-
-            <mfx-questionnaire id="questionnaire"
-            props ='{"name":"","surname":"","pharmaPassID":"","npwz":"","questionnaireId":""}'>
-            </mfx-questionnaire>
-            <script src="https://devcdnankiety.mediaflex.com.pl/client-tag/client.js"></script>
-            <script src="./quest_survey.js"></script>
-        </div>
     </div>
 
     <script src="./script.js"></script>

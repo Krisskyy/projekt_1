@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-modal">
+        <div class="logo modal-logo">
+          <img src="./media/logo.svg" alt="Logo" />
+        </div>
+        <div class="modal-content survey-nps-conn">
+            <mfx-questionnaire
+            id="questionnaire"
+            props='{"name":"","surname":"","pharmaPassID":"","npwz":"","questionnaireId":""}'
+            >
+            </mfx-questionnaire>
+            <script src="https://devcdnankiety.mediaflex.com.pl/client-tag/client.js"></script>
+            <script src="./quest_survey.js"></script>
+      </div>
+    </div>
+</body>
+</html>
