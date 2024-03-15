@@ -1,5 +1,4 @@
 <?php
-// Connect to the database
 $conn = new mysqli('localhost', 'root', '', 'surveydb');
 $conn->set_charset('utf8');
 
