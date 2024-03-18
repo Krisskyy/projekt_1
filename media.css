@@ -38,7 +38,7 @@
         margin-right: 0; 
     }
 
-    /* CSS do pierwszej sekcji, banera */
+    /* CSS do pierwszej strony */
     section.banner {
         flex-direction: column;
         padding-top: 20px;

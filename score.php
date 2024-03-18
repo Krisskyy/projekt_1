@@ -2,6 +2,7 @@
 $conn = new mysqli('localhost', 'root', '', 'surveydb');
 $conn->set_charset('utf8');
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['score'])) {
         if (filter_var($_POST['score'], FILTER_VALIDATE_INT) !== false) {
