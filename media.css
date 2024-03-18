@@ -1,0 +1,470 @@
+@media screen and (max-width: 430px) {
+    body {
+        max-width: 430px;
+        margin: 0;
+    }
+
+    .container{
+        max-width: 430px;
+    }
+
+    .padding {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+    .first-page {
+        max-width: 430px;
+        height: 850px;
+    }
+
+    header {
+        display: flex;
+        height: 90px;
+    }
+
+    .logo {
+        width: 150px;
+        margin-right: 20px;
+        margin: auto;
+    }
+
+    header a {
+        font: normal normal 10px Poppins;
+        text-decoration: none;
+        display: none;
+    }
+
+    header a:first-of-type {
+        margin-right: 0; 
+    }
+
+    /* CSS do pierwszej sekcji, banera */
+    section.banner {
+        flex-direction: column;
+        padding-top: 20px;
+    }
+
+    section .left {
+        flex-direction: column;
+    }
+
+    section .left h2 {
+        font-size: 25px;
+        width: 350px;
+    }
+
+    section .left .line {
+        width: 100px;
+        margin: 15px 0;
+    }
+
+    section .left p {
+        font: normal normal normal 14px/32px Poppins;
+        width: 350px;
+        margin-bottom: 25px;
+    }
+
+    section .button-banner {
+        display: flex;
+        justify-content: center;
+    }
+
+    section .left input, .second-page input, .third-page input{
+        width: 120px;
+        padding: 10px 15px;
+        font: normal normal 600 13px Poppins;
+    }
+
+    section .right img {
+        width: 300px;
+    }
+
+    .round {
+        margin-top: 100px;
+    }
+
+
+    /* Druga strona */
+    .second-page {
+        max-width: 430px;
+        margin-top: 20px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .second-page h2 {
+        font-size: 25px;
+        margin: 50px 0;
+    }
+
+    .second-page .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards .card {
+        width: 340px;
+        height: 411px;
+        margin-top: 10px;
+        
+    }
+
+    .card:first-of-type, .card:nth-of-type(2){
+        margin-right: 0;
+    }
+
+    .second-page a{
+        margin-bottom: 35px;
+        margin-top: 10px;
+        font: normal normal 600 17px/50px Poppins;
+    }
+    /* Trzecia strona */
+
+    .third-page {
+        padding-bottom: 25px;
+        max-width: 430px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .third-page h2 {
+        padding-top: 50px;
+        margin-bottom: 15px;
+        font: normal normal bold 25px Poppins;
+    }
+
+    .third-page .boxes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boxes .box {
+        width: 300px;
+        height: 210px;
+        margin-bottom: 10px;
+        margin-right: 25px;
+    }
+
+    .boxes .box::before {
+        border-top: 105px solid transparent;
+        border-bottom: 105px solid transparent;
+        z-index: 2;
+    }
+
+    .boxes .box::after {
+        border-top: 105px solid transparent;
+        border-bottom: 105px solid transparent;
+    }
+
+    .box-round{
+        width: 72px;
+        height: 72px;
+    }
+
+    .box-round img{
+        height: 43px;
+    }
+    
+    .box-header h3 {
+        font: normal normal 25px Poppins;
+    }
+
+    .box .box-text p {
+        font: normal normal bold 16px Poppins;
+    }
+
+    .box:nth-of-type(2) .box-text p {
+        max-width: 309px;
+    }
+
+    /* Stopka */
+
+    footer{
+        padding: 15px;
+    }
+
+    /* Modale */
+
+    .container-modal{
+        background-color: rgba(0, 0, 0, 0.4);
+        position: relative;
+
+        width: 1920px;
+        height: 100vh;
+    }
+
+    .modal-logo{
+        padding: 40px 0 0 303px;
+    }
+
+    .modal-content{
+        position: absolute;
+        z-index: 1;
+        width: 1088px;
+        height: 600px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 60px #101E0033;
+        border-radius: 20px;
+        top: 180px;
+        left: 416px;
+        padding: 40px 40px 40px 35px;
+    }
+
+    .modal-content h2{
+        color: #2D635A;
+        font: normal normal normal 38px/51px Abril Fatface;
+    }
+
+    .modal-content h3{
+        color: #E1B9B5;
+        font: normal normal 600 21px/28px Poppins;
+    }
+
+    .h3-margin{
+        margin-top: 13px;
+        margin-bottom: 19px;
+    }
+
+    .modal-content h4{
+        font: normal normal  20px/26px Poppins;
+        margin-bottom: 48px;
+    }
+
+    .answer{
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 75px;
+        margin-bottom: 20px;
+    }
+
+    .answer img{
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+    }
+
+    .answer p{
+        color: white;
+        font: normal normal bold 24px/26px Roboto;
+        margin: 0 56px 0 26px;
+    }
+
+    .answer input{
+        border-radius: 10px;
+        width: 909px;
+        background: #FFFFFF;
+        padding: 10px;
+        text-align: left;
+        font-family: 'Poppins';
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .next-question{
+        display: flex;
+        justify-content: flex-end;
+        width: 33%;
+    }
+
+    .last-question{
+        width: 33%;
+    }
+
+    .submit{
+        display: flex;
+        color: #543E3C;
+        justify-content: center;
+        align-items: center;
+        background: #E1B9B5 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 40px;
+        width: 256px;
+        height: 61px;
+        padding: 18px 32px;
+        border: none;
+        text-transform: uppercase;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+
+    .paragraph{
+        margin-right: 10px;
+        font: normal normal 600 18px/27px Poppins;
+        color: #543E3C;
+    }
+
+
+    .buttons{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .back{
+        display: flex;
+        align-items: center;
+        width: 190px;
+        height: 19px;
+        font: normal normal 16px/19px Roboto;
+        letter-spacing: 0px;
+        color: #E1B9B5;
+        cursor: pointer;
+    }
+
+    .back p{
+        margin-left: 15px;
+    }
+
+    .d-none{
+        display: none;
+    }
+
+    /* Kolejny modal */
+    .score{
+        width: 1088px;
+        height: 726px;
+    }
+
+    .score h3{
+        width: 260px;
+        height: 39px;
+        font: normal normal normal 28px/42px Poppins;
+        letter-spacing: 0px;
+        color: #000000;
+        margin: 25px 0 30px 0;
+    }
+
+    .score h4{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #E3E3E3;
+        border-radius: 20px;
+        width: 421px;
+        height: 95px;
+        margin-bottom: 50px;
+        font-family: Poppins;
+        font-size: 38px;
+
+    }
+
+    .score .par{
+        width: 600px;
+        height: 28px;
+        font: normal normal 20px/26px Poppins;
+        margin-bottom: 21px;
+    }
+
+    .score p:nth-of-type(2){
+        margin: 13px 0 23px 0;
+        font: normal normal 14px/21px Poppins;
+        font-weight: 500;
+    }
+
+    .score p:nth-of-type(3){
+        margin-bottom: 23px;
+        font: normal normal 14px/21px Poppins;
+        font-weight: 500;
+    }
+
+    .score .end-button{
+        width: 187px;
+        height: 61px;
+        background: #E1B9B5 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 40px;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+
+    .score .end-button p{
+        text-align: center;
+        font: normal normal 600 18px/27px Poppins;
+        color: #543E3C;
+    }
+
+    .score p a, .score td a {
+        margin-left: 10px;
+    }
+
+    .score table input{
+        width: 19px;
+        height: 19px;
+    }
+
+    .score tr, td{
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .score tr{
+        margin-bottom: 15px;
+    }
+
+    .score table{
+        height: 156px;
+    }
+
+    .score label{
+        font: normal normal 14px/21px Poppins;
+        font-weight: 500;
+        margin-left: 8px;
+    }
+    .next-page{
+        display: flex;
+        align-items: center;
+        margin: 0 0 15px 0px
+    }
+
+    .score span, .score a{
+        color: #E1B9B5;
+    }
+
+    .score .images img, .score-round{
+        position: absolute;
+    }
+
+    .score .images img:first-of-type{
+        width: 77px;
+        z-index: 2;
+        right: 254px;
+        top: 190px;
+    }
+
+    .score .images img:nth-of-type(2){
+        width: 124px;
+        z-index: 3;
+        right: 145px;
+        top: 205px;
+    }
+
+    .score .images img:last-of-type{
+        width: 206px;
+        right: 50px;
+        top: 262px;
+        z-index: 4;
+    }
+
+    .score-round{
+        background: #DDC1BC 0% 0% no-repeat padding-box;
+        width: 257px;
+        height: 257px;
+        border-radius: 100%;
+        top: 120px;
+        right: 78px;
+    }
+
+    .button-nps{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
