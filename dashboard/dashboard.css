@@ -10,6 +10,7 @@ body{
     font-family: 'Poppins';
     max-width: 1920px;
     max-height: 2876px;
+    background: #F6F7F8 0% 0% no-repeat padding-box;
 }
 
 .padding{
@@ -60,7 +61,6 @@ header{
 
 /* Page */
 .page{
-    background: #F6F7F8 0% 0% no-repeat padding-box;
     height: 1200px;
     padding-top: 1px;
 }
@@ -77,7 +77,6 @@ header{
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
-    width: 1315px;
 }
 
 .box{
@@ -107,7 +106,7 @@ header{
 /* Content header */
 .content{
     width: 1315px;
-    height: 850px;
+    height: 820px;
     position: relative;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border-radius: 4px;
@@ -334,3 +333,6 @@ header{
     margin-top: 9px;
 }
 
+.icon{
+    background: url('./dashboardMedia/search-icon.svg') no-repeat right;
+}
