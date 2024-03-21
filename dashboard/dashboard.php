@@ -1,107 +1,94 @@
 <?php
-function showData(){
-    $conn = new mysqli('localhost', 'root', '', 'surveydb');
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+class SurveyProcessor {
+    private $conn;
+
+    function __construct() {
+        $this->conn = new mysqli('localhost', 'root', '', 'surveydb');
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
+        }
+        $this->conn->set_charset('utf8');
     }
-    $conn->set_charset('utf8');
-    $search = '';
-    if(isset($_POST['search'])){
-        $search = $_POST['search'];
+
+    function __destruct() {
+        $this->conn->close();
     }
-    
-    if(!$search){
-        $q = "SELECT
-        users.userID,
-        CONCAT(users.name, ' ', users.surname) AS full_name,
-        DATE_FORMAT(scores.date, '%d.%m.%Y, %H:%i') AS date,
-        scores.score,
-        (SELECT COUNT(*) + 1
-            FROM scores AS s
-            WHERE s.score > scores.score
-            OR (s.score = scores.score AND s.date < scores.date)) AS rank,
-        scores.win,
-        CONCAT(address.street, ' ', address.housenumber,
-                IF(address.apartmentnumber <> '', CONCAT('/', address.apartmentnumber), ''),
-                ' ', address.zipcode, ' ', address.location) AS full_address,
-        surveynps.score AS nps_score,
-        surveynps.comment AS nps_comment
-        FROM
-            users
-        LEFT JOIN
-            scores ON users.userID = scores.userID
-        LEFT JOIN
-            address ON users.addressID = address.addressID
-        LEFT JOIN
-            surveynps ON scores.surveyID = surveynps.surveyID";
 
-        $stmt = $conn->prepare($q);
-        $stmt->execute();
-
-        $stmt->bind_result($userID, $full_name, $date, $score, $rank, $win, $full_address, $nps_score, $nps_comment);
-
-        while($stmt->fetch()) {
-            echo "<tr>";
-            echo "<td><button class=\"wrapped\"></button></td>";
-            echo "<td>" . htmlspecialchars($userID) . "</td>";
-            echo "<td>" . htmlspecialchars($full_name) . "</td>";
-            echo "<td>" . htmlspecialchars($date) . "</td>";
-            echo "<td>" . htmlspecialchars($score) . "</td>";
-            echo "<td>" . htmlspecialchars($rank) . "</td>";
-            echo "<td>";
-            echo ($win == 1) ? "<div class=\"stm-true\"><img src=\"./dashboardMedia/true.svg\" alt=\"true\">TAK</div>" : "<div class=\"stm-false\"><img src=\"./dashboardMedia/false.svg\" alt=\"false\">NIE</div>";
-            echo "</td>";
-            echo ($full_address != NULL) ? "<td>" . htmlspecialchars($full_address) . "</td>" : "<td> - </td>";
-            echo "</tr>";
-            echo "<tr class=\"none\">";
-            echo "<td style=\"height: 120px;\" colspan=\"8\">";
-            echo "<div class=\"info-container\">";
-            echo "<div class=\"info-header\">";
-            echo "<h2>Czas rozwiązania <br> konkursu <p>00:06:12</p></h2>";
-            echo "<h2>Data przesłania <br> danych teleadresowych <p> ". htmlspecialchars($date) ."</p></h2>";
-            echo ($nps_score != NULL) ? "<h2>Ocena NPS <p> ". htmlspecialchars($nps_score) ."</p></h2>" : "<h2>Ocena NPS <p> - </p></h2>";
-            echo ($nps_comment != NULL) ? "<h2>Komentarz <p class=\"comment\">". htmlspecialchars($nps_comment) ."</p></h2>" : "<h2>Komentarz <p class=\"comment\"> - </p></h2>";
-            echo "</div>";
-            echo "</div>";
-            echo "</td>";
-            echo "</tr>";
+    public function showData() {
+        $search = '';
+        if(isset($_POST['search'])){
+            $search = $_POST['search'];
         }
 
-    $stmt->close();
-    } else{
-        $q = "SELECT
-        users.userID,
-        CONCAT(users.name, ' ', users.surname) AS full_name,
-        DATE_FORMAT(scores.date, '%d.%m.%Y, %H:%i') AS date,
-        scores.score,
-        (SELECT COUNT(*) + 1
-            FROM scores AS s
-            WHERE s.score > scores.score
-            OR (s.score = scores.score AND s.date < scores.date)) AS rank,
-        scores.win,
-        CONCAT(address.street, ' ', address.housenumber,
-                IF(address.apartmentnumber <> '', CONCAT('/', address.apartmentnumber), ''),
-                ' ', address.zipcode, ' ', address.location) AS full_address,
-        surveynps.score AS nps_score,
-        surveynps.comment AS nps_comment
-        FROM
-            users
-        LEFT JOIN
-            scores ON users.userID = scores.userID
-        LEFT JOIN
-            address ON users.addressID = address.addressID
-        LEFT JOIN
-            surveynps ON scores.surveyID = surveynps.surveyID 
-        WHERE users.name LIKE '$search%' OR users.surname LIKE '$search%' OR concat(users.name, ' ', users.surname) LIKE '$search%';";
+        if(!$search) {
+            $positions = $this->getPositions();
 
-        $stmt = $conn->prepare($q);
+            $between = $this->getBetweenValues($positions);
+
+            $q = "SELECT
+                    users.userID,
+                    CONCAT(users.name, ' ', users.surname) AS full_name,
+                    DATE_FORMAT(scores.date, '%d.%m.%Y, %H:%i') AS date,
+                    scores.score,
+                    (SELECT COUNT(*) + 1
+                        FROM scores AS s
+                        WHERE s.score > scores.score
+                        OR (s.score = scores.score AND s.date < scores.date)) AS rank,
+                    scores.win,
+                    CONCAT(address.street, ' ', address.housenumber,
+                            IF(address.apartmentnumber <> '', CONCAT('/', address.apartmentnumber), ''),
+                            ' ', address.zipcode, ' ', address.location) AS full_address,
+                    surveynps.score AS nps_score,
+                    surveynps.comment AS nps_comment
+                    FROM
+                        users
+                    LEFT JOIN
+                        scores ON users.userID = scores.userID
+                    LEFT JOIN
+                        address ON users.addressID = address.addressID
+                    LEFT JOIN
+                        surveynps ON scores.surveyID = surveynps.surveyID WHERE users.userid BETWEEN ? AND ? LIMIT ?";
+
+            $stmt = $this->conn->prepare($q);
+            $stmt->bind_param("iii", $between['betweenOne'], $between['betweenTwo'], $positions);
+        } else {
+            $positions = $this->getPositions();
+            $q = "SELECT
+                    users.userID,
+                    CONCAT(users.name, ' ', users.surname) AS full_name,
+                    DATE_FORMAT(scores.date, '%d.%m.%Y, %H:%i') AS date,
+                    scores.score,
+                    (SELECT COUNT(*) + 1
+                        FROM scores AS s
+                        WHERE s.score > scores.score
+                        OR (s.score = scores.score AND s.date < scores.date)) AS rank,
+                    scores.win,
+                    CONCAT(address.street, ' ', address.housenumber,
+                            IF(address.apartmentnumber <> '', CONCAT('/', address.apartmentnumber), ''),
+                            ' ', address.zipcode, ' ', address.location) AS full_address,
+                    surveynps.score AS nps_score,
+                    surveynps.comment AS nps_comment
+                    FROM
+                        users
+                    LEFT JOIN
+                        scores ON users.userID = scores.userID
+                    LEFT JOIN
+                        address ON users.addressID = address.addressID
+                    LEFT JOIN
+                        surveynps ON scores.surveyID = surveynps.surveyID 
+                    WHERE users.name LIKE ? OR users.surname LIKE ? OR concat(users.name, ' ', users.surname) LIKE ? LIMIT ?";
+
+            $stmt = $this->conn->prepare($q);
+            $search = "%$search%";
+            $stmt->bind_param("sssi", $search, $search, $search, $positions);
+        }
+
         $stmt->execute();
-
         $stmt->bind_result($userID, $full_name, $date, $score, $rank, $win, $full_address, $nps_score, $nps_comment);
 
         while($stmt->fetch()) {
             echo "<tr>";
-            echo "<td><button class=\"wrapped\"></button></td>";
+            echo "<td><button class=\"wrapped\" type=\"button\"></button></td>";
             echo "<td>" . htmlspecialchars($userID) . "</td>";
             echo "<td>" . htmlspecialchars($full_name) . "</td>";
             echo "<td>" . htmlspecialchars($date) . "</td>";
@@ -129,8 +116,123 @@ function showData(){
         $stmt->close();
     }
 
-    $conn->close();
-}
+    private function getPositions() {
+        $items = 0;
+        $q = "SELECT COUNT(scores.scoreID) AS total FROM scores;";
+        $result = $this->conn->query($q);
+        $row = $result->fetch_assoc();
+        $total_pages = $row['total'];
+
+        if(isset($_POST['positions'])) {
+            if ($_POST['positions'] > $total_pages) {
+                $items = $total_pages;
+            } else {
+                $items = $_POST['positions'];
+            }
+
+        } else {
+            $items = 5;
+        }
+        return $items;
+    }
+
+    private function getBetweenValues($positions) {
+        if ($positions == 5) {
+            $betweenOne = 1;
+            $betweenTwo = 5;
+            if (isset($_POST['page'])) {
+                $page = $_POST['page'];
+                $betweenOne = 5 * ($page - 1) + 1;
+                $betweenTwo = 5 * $page;
+            }
+        } elseif ($positions == 10) {
+            $betweenOne = 1;
+            $betweenTwo = 10;
+            if (isset($_POST['page'])) {
+                $page = $_POST['page'];
+                $betweenOne = 10 * ($page - 1) + 1;
+                $betweenTwo = 10 * $page;
+                }
+                } elseif ($positions == 15) {
+                    $betweenOne = 1;
+                    $betweenTwo = 15;
+                if (isset($_POST['page'])) {
+                    $page = $_POST['page'];
+                    $betweenOne = 15 * ($page - 1) + 1;
+                    $betweenTwo = 15 * $page;
+                }
+                }
+            return array("betweenOne" => $betweenOne, "betweenTwo" => $betweenTwo);
+        }
+                
+        public function pages() {
+            $q = "SELECT COUNT(scores.scoreID) AS total FROM scores";
+            $stmt = $this->conn->prepare($q);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $total_pages = intval($row['total']);
+            $stmt->close();
+            return $total_pages;
+        }
+
+
+        public function getPageNumber() {
+            $conn = new mysqli('localhost', 'root', '', 'surveydb');
+                
+            $q = "SELECT COUNT(scores.scoreID) AS total FROM scores;";
+            $result = $conn->query($q);
+            $row = $result->fetch_assoc();
+            $total_pages = $row['total'];
+                
+            $items = 0;
+            if(isset($_POST['positions'])) {
+                if ($_POST['positions'] > $total_pages) {
+                    $items = $total_pages;
+                } else {
+                    if($_POST['positions'] == 5) {
+                        $items = 5;
+                    } else if($_POST['positions'] == 10) {
+                        $items = 10;
+                    } else if($_POST['positions'] == 15) {
+                        $items = 15;
+                    }
+                }
+            } else {
+                $items = 5;
+            }
+                
+            if(isset($_POST['page'])) {
+                $page = intval($_POST['page']);
+                $itemsPerPage = intval($_POST['positions']);
+                
+                $items = $itemsPerPage * $page;
+                if ($items > $total_pages) {
+                    $items = $total_pages;
+                }
+            }
+                
+                
+            return $items;
+        }
+
+        public  function getSecondPageNumber() {
+            $itemsTwo = 1;
+            $positions = $this->getPageNumber();
+                
+            if(isset($_POST['positions'])) {
+                if($_POST['positions'] == 5) {
+                    $itemsTwo = $positions - 4; 
+                } else if($_POST['positions'] == 10) {
+                    $itemsTwo = $positions - 9; 
+                } else if($_POST['positions'] == 15) {
+                    $itemsTwo = $positions - 14; 
+                }
+            }
+            return $itemsTwo;
+        }
+    }
+    $surveyProcessor = new SurveyProcessor();
 ?>
 
 
@@ -157,90 +259,149 @@ function showData(){
                 <img src="./dashboardMedia//ikona log out.svg" alt="Log Out">
             </div>
         </header>
-
+        
         <div class="page padding">
-            <h1>Wiosna Nadchodzi - Konkurs Mediaflex</h1>
+            <form action="dashboard.php" method="post" id="pages">
+                <h1>Wiosna Nadchodzi - Konkurs Mediaflex</h1>
 
-            <div class="boxes">
-                <div class="box">
-                    <h5>Data rozpoczęcia konkursu</h5>
-                    <h6>06.10.2022, 10:00</h6>
+                <div class="boxes">
+                    <div class="box">
+                        <h5>Data rozpoczęcia konkursu</h5>
+                        <h6>06.10.2022, 10:00</h6>
+                    </div>
+                    <div class="box">
+                        <h5>Data zakończenia konkursu</h5>
+                        <h6>30.10.2022, 10:00</h6>
+                    </div>
+                    <div class="box">
+                        <h5>Limit udziałów</h5>
+                        <h6>1</h6>
+                    </div>
+                    <div class="box">
+                        <h5>Maksymalna ilość punktów do uzyskania</h5>
+                        <h6>3</h6>
+                    </div>
+                    <div class="box">
+                        <h5>Liczba zwycięzców</h5>
+                        <h6>20</h6>
+                    </div>
                 </div>
-                <div class="box">
-                    <h5>Data zakończenia konkursu</h5>
-                    <h6>30.10.2022, 10:00</h6>
-                </div>
-                <div class="box">
-                    <h5>Limit udziałów</h5>
-                    <h6>1</h6>
-                </div>
-                <div class="box">
-                    <h5>Maksymalna ilość punktów do uzyskania</h5>
-                    <h6>3</h6>
-                </div>
-                <div class="box">
-                    <h5>Liczba zwycięzców</h5>
-                    <h6>20</h6>
-                </div>
-            </div>
 
-            <section class="content">
-                <div class="content-header">
-                    <button>Lista uczestników</button>
-                    <button>Lista zwycięzców</button>
-                </div>
-                <div class="content-search">
-                    <h3>Wyszukaj użytkownika</h3>
-                    <div class="input-button">
-                        <form action="dashboard.php" method="post">
-                            <input type="text" name="search" id="search">
-                            <button type="submit" class="search-button"></button>
-                        </form>
+                <section class="content all">
+                    <div class="content-header">
+                        <button type="button" class="activated-button">Lista uczestników</button>
+                        <button type="button" class="disabled-button" onclick="switchInformations()">Lista zwycięzców</button>
                     </div>
-                </div>
-                <div class="rest">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>LP</th>
-                                <th>Imię i nazwisko</th>
-                                <th>Data wzięcia <br>udziału w konkursie</th>
-                                <th>Ilość uzyskanych <br> punktów</th>
-                                <th>Zajęte <br>miejsce</th>
-                                <th>Wygrana</th>
-                                <th>Sposób dostarczenia <br>nagrody</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php echo showData(); ?>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="content-footer">
-                    <div class="footer-left">
-                        <h5>Pozycje od 1 do 10 z 270 łącznie</h5>
-                        <h6>
-                            Pokaż 
-                            <select name="pages" id="pages">
-                                <option value="opt1">10</option>
-                                <option value="opt2">25</option>
-                                <option value="opt3">50</option>
-                            </select>
-                            pozycji
-                        </h6>
+                    <div class="content-search">
+                        <h3>Wyszukaj użytkownika</h3>
+                        <div class="input-button">
+                                <input type="text" name="search" id="search">
+                                <button type="submit" class="search-button"></button>
+                        </div>
                     </div>
-                    <div class="footer-right">
-                        <button><h3>Poprzednia</h3></button>
-                        <button><p class="p-checked">1</p></button>
-                        <button><p>2</p></button>
-                        <button><p>3</p></button>
-                        <button><p>4</p></button>
-                        <button><p>5</p></button>
-                        <button><h4>Następna</h4></button>
+                    <div class="rest">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>LP</th>
+                                    <th>Imię i nazwisko</th>
+                                    <th>Data wzięcia <br>udziału w konkursie</th>
+                                    <th>Ilość uzyskanych <br> punktów</th>
+                                    <th>Zajęte <br>miejsce</th>
+                                    <th>Wygrana</th>
+                                    <th>Sposób dostarczenia <br>nagrody</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php $surveyProcessor->showData(); ?>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </section>
+                    <div class="content-footer">
+                        <div class="footer-left">
+                            <h5>Pozycje od <?php echo $surveyProcessor->getSecondPageNumber(); ?> do <?php echo $surveyProcessor->getPageNumber(); ?> z <?php echo $surveyProcessor->pages(); ?> łącznie</h5>
+                            <h6>
+                                Pokaż 
+                                    <select id="positions" name="positions" onchange="submitForm()">
+                                    <option value="5" <?php if(isset($_POST['positions']) && $_POST['positions'] == "5") echo "selected"; ?>>5</option>
+                                    <option value="10" <?php if(isset($_POST['positions']) && $_POST['positions'] == "10") echo "selected"; ?>>10</option>
+                                    <option value="15" <?php if(isset($_POST['positions']) && $_POST['positions'] == "15") echo "selected"; ?>>15</option>
+                                    </select>
+                                pozycji
+                            </h6>
+                        </div>
+                        <div class="footer-right">
+                            <button type="submit" name="previous">Poprzednia</button>
+                            <button class="page" type="submit" name="page" value="1">1</button>
+                            <button type="submit" name="page" value="2">2</button>
+                            <button type="submit" name="page" value="3">3</button>
+                            <button type="submit" name="page" value="4">4</button>
+                            <button type="submit" name="page" value="5">5</button>
+                            <button type="submit" name="next">Następna</button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+
+            
+            <form action="dashboard.php" method="post" id="pagesWinners">
+                <section class="content winners none">
+                    <div class="content-header">
+                        <button type="button" class="disabled-button" onclick="switchInformations()">Lista uczestników</button>
+                        <button type="button" class="activated-button">Lista zwycięzców</button>
+                    </div>
+                    <div class="content-search">
+                        <h3>Wyszukaj użytkownika</h3>
+                        <div class="input-button">
+                                <input type="text" name="search" id="search">
+                                <button type="submit" class="search-button"></button>
+                        </div>
+                    </div>
+                    <div class="rest">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>LP</th>
+                                    <th>Imię i nazwisko</th>
+                                    <th>Data wzięcia <br>udziału w konkursie</th>
+                                    <th>Ilość uzyskanych <br> punktów</th>
+                                    <th>Zajęte <br>miejsce</th>
+                                    <th>Wygrana</th>
+                                    <th>Sposób dostarczenia <br>nagrody</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php //$surveyProcessor->showData(); ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="content-footer">
+                        <div class="footer-left">
+                            <h5>Pozycje od <?php echo $surveyProcessor->getSecondPageNumber(); ?> do <?php echo $surveyProcessor->getPageNumber(); ?> z <?php echo $surveyProcessor->pages(); ?> łącznie</h5>
+                            <h6>
+                                Pokaż 
+                                    <select id="positions" name="positions" onchange="submitForm()">
+                                    <option value="5" <?php if(isset($_POST['positions']) && $_POST['positions'] == "5") echo "selected"; ?>>5</option>
+                                    <option value="10" <?php if(isset($_POST['positions']) && $_POST['positions'] == "10") echo "selected"; ?>>10</option>
+                                    <option value="15" <?php if(isset($_POST['positions']) && $_POST['positions'] == "15") echo "selected"; ?>>15</option>
+                                    </select>
+                                pozycji
+                            </h6>
+                        </div>
+                        <div class="footer-right">
+                            <button type="submit" name="previous">Poprzednia</button>
+                            <button class="page" type="submit" name="page" value="1">1</button>
+                            <button type="submit" name="page" value="2">2</button>
+                            <button type="submit" name="page" value="3">3</button>
+                            <button type="submit" name="page" value="4">4</button>
+                            <button type="submit" name="page" value="5">5</button>
+                            <button type="submit" name="next">Następna</button>
+                        </div>
+                    </div>
+                </section>
+            </form>
         </div>
     </div>
     <script src="./dashboard_script.js"></script>

@@ -106,32 +106,40 @@ header{
 /* Content header */
 .content{
     width: 1315px;
-    position: relative;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border-radius: 4px;
     padding: 30px 30px 40px 40px;
 }
 
 .content-header{
+    position: relative;
     border-bottom: 1px solid #EDF0F2;
     padding-bottom: 11px;
     margin-bottom: 30px;
 }
 
-.content-header button:first-of-type{
-    font: normal normal 400 18px/27px Poppins;
-    letter-spacing: 0px;
-    color: #A1A1A1;
-    margin-right: 21px;
-}
-
-.content-header button:nth-of-type(2){
+.content-header .activated-button{
     position: absolute;
     font: normal normal 500 18px/27px Poppins;
     letter-spacing: 0px;
     color: #543E3C;
     border-bottom: 2px solid black;
     padding-bottom: 10px;
+}
+
+.content-header .disabled-button{
+    font: normal normal 400 18px/27px Poppins;
+    letter-spacing: 0px;
+    color: #A1A1A1;
+    margin-left: 180px;
+}
+
+.winners .disabled-button{
+    font: normal normal 400 18px/27px Poppins;
+    letter-spacing: 0px;
+    color: #A1A1A1;
+    margin-right: 26px;
+    margin-left: 0;
 }
 
 /* Content search */
@@ -269,6 +277,8 @@ header{
 }
 
 .content-footer .footer-left h6{
+    display: flex;
+    align-items: center;
     font: normal normal 400 12px/18px Poppins;
     letter-spacing: 0px;
     color: #000000;
@@ -287,38 +297,31 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #E6EAEE;
-    border-radius: 4px 4px 4px 4px;
     text-align: center;
-    border-collapse: collapse;
     height: 41px;
 }
 
-.footer-right h3{
-    width: 105px;
-    font: normal normal 400 12px/40px Poppins;
-    letter-spacing: 0px;
-    color: #1E1E1E;
-}
-
-.footer-right h4{
-    width: 76px;
-    font: normal normal 400 12px/40px Poppins;
-    letter-spacing: 0px;
-    color: #543E3C;
-}
-
-.footer-right p{
-    width: 27px;
-    font: normal normal 400 12px/40px Poppins;
-    letter-spacing: 0px;
+.footer-right button {
+    background-color: #ffffff;
     border: 1px solid #E6EAEE;
+    border-right: none;
+    margin: 0;
+    padding: 8px 10px;
+    font: normal normal normal 12px Poppins;
+    color: #1E1E1E;
     border-collapse: collapse;
 }
-
-.footer-right .p-checked{
+.footer-right button:last-of-type {
+    border-right: 1px solid #E6EAEE;
+    border-radius: 0px 4px 4px 0px;
+}
+.footer-right button:first-of-type {
+    border-radius: 4px 0px 0px 4px;
+}
+.footer-right .page {
     background: #543E3C 0% 0% no-repeat padding-box;
     color: #FFFFFF;
+    height: 88%;
 }
 
 /* Info */
