@@ -120,6 +120,10 @@
         margin-top: 10px;
         font: normal normal 600 17px/50px Poppins;
     }
+
+    .second-page input, .third-page input{
+        display: block;
+    }
     /* Trzecia strona */
 
     .third-page {
@@ -212,7 +216,7 @@
     .modal-content{
         width: 340px;
         height: auto;
-        padding: 20px;
+        padding: 20px 20px 10px 20px;
         position: unset;
         margin: auto;
         margin-top: 20px;
@@ -290,6 +294,7 @@
     .score{
         max-width: 430px;
         max-height: 950px;
+        margin-top: 0px;
         width: auto;
     }
 
@@ -299,16 +304,16 @@
     }
 
     .score h4{
-        font: normal normal 23px Poppins;
+        font: normal normal 20px Poppins;
         margin-bottom: 10px;
         width: 100%;
-        height: 65px;
+        height: 35px;
 
     }
 
     .score .par{
         width: 100%;
-        height: 22px;
+        height: 35px;
         font: normal bold 12px Poppins;
         margin-bottom: 10px;
     }
@@ -371,5 +376,598 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .d-none{
+        display: none !important;
+    }
+}
+
+
+@media screen and (min-width: 431px) and (max-width: 884px){
+    body {
+        max-width: 884px;
+        margin: 0;
+    }
+
+    .container{
+        max-width: 884px;
+    }
+
+    .padding {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .first-page {
+        max-width: 884px;
+        height: 850px;
+    }
+
+    header {
+        display: flex;
+        height: 100px;
+    }
+
+    .logo {
+        width: 200px;
+        margin-right: 20px;
+        margin: auto;
+    }
+
+    header a {
+        font: normal normal 14px Poppins;
+        text-decoration: none;
+        display: none;
+    }
+
+    header a:first-of-type {
+        margin-right: 0; 
+    }
+
+    /* CSS do pierwszej strony */
+    section.banner {
+        flex-direction: column;
+        padding-top: 20px;
+    }
+
+    section .left {
+        flex-direction: column;
+    }
+
+    section .left h2 {
+        font-size: 32px;
+        width: 550px;
+    }
+
+    section .left .line {
+        width: 200px;
+        margin: 15px 0;
+    }
+
+    section .left p {
+        font: normal normal normal 16px/32px Poppins;
+        width: 550px;
+        margin-bottom: 25px;
+    }
+
+    section .button-banner {
+        display: flex;
+        justify-content: center;
+    }
+
+    section .left input, .second-page input, .third-page input{
+        width: 200px;
+        padding: 17px 26px;
+        font: normal normal 600 19px Poppins;
+    }
+
+    section .right img {
+        width: 375px;
+    }
+
+    .round {
+        margin-top: 40px;
+    }
+
+
+    /* Druga strona */
+    .second-page {
+        max-width: 884px;
+        margin-top: 20px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .second-page h2 {
+        font-size: 32px;
+        margin: 50px 0;
+    }
+
+    .second-page .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards .card {
+        width: 380px;
+        height: 411px;
+        margin-top: 10px;
+        
+    }
+
+    .card:first-of-type, .card:nth-of-type(2){
+        margin-right: 0;
+    }
+
+    .second-page a{
+        margin-bottom: 35px;
+        margin-top: 10px;
+        font: normal normal 600 21px/50px Poppins;
+    }
+
+    .second-page input, .third-page input{
+        display: block;
+    }
+    /* Trzecia strona */
+
+    .third-page {
+        padding-bottom: 25px;
+        max-width: 884px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .third-page h2 {
+        padding-top: 50px;
+        margin-bottom: 15px;
+        font: normal normal bold 32px Poppins;
+    }
+
+    .third-page .boxes {
+        flex-direction: column;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    /* Stopka */
+
+    footer{
+        padding: 25px;
+    }
+
+    /* Modale */
+
+    .container-modal{
+        display: grid;
+        position: unset;
+        padding: 25px;
+        max-width: 884px;
+        max-height: 100vh;
+        width: auto;
+    }
+
+    .modal-logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .answer img{
+        z-index: 1;
+    }
+
+    .answer p{
+        z-index: 2;
+    }
+
+    .modal-content{
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        position: unset;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .modal-content h2{
+        color: #2D635A;
+        font: normal normal normal 32px Abril Fatface;
+    }
+
+    .modal-content h3{
+        color: #E1B9B5;
+        font: normal normal 600 24px/25px Poppins;
+    }
+
+    .h3-margin{
+        margin-top: 10px;
+        margin-bottom: 12px;
+    }
+
+    .modal-content h4{
+        font: normal normal  20px/22px Poppins;
+        margin-bottom: 28px;
+    }
+
+    .answer input{
+        width: 95%;
+    }
+
+    .next-question{
+        display: flex;
+        justify-content: flex-end;
+        width: 33%;
+    }
+
+    .last-question{
+        width: 33%;
+    }
+
+    .submit{
+        display: flex;
+        height: 58px;
+    }
+
+
+    .buttons{
+        position: relative;
+        margin-top: 25px;
+    }
+
+    .back{
+        width: 90px;
+        height: 19px;
+    }
+
+
+    .alert-one, .alert-two, .alert-three{
+        position: absolute;
+        width: 100%;
+        font-size: 14px;
+        right: 35px;
+    }
+    /* Kolejny modal */
+    .score{
+        max-width: 884px;
+        width: 100%;
+    }
+
+    .score h3{
+        font: normal normal normal 24px Poppins;
+        margin-bottom: 10px;
+    }
+
+    .score h4{
+        font: normal normal 22px Poppins;
+        margin-bottom: 10px;
+        width: 50%;
+        height: 55px;
+
+    }
+
+    .score .par{
+        height: 35px;
+        font: normal bold 16px Poppins;
+        margin-bottom: 10px;
+    }
+
+    .score p:nth-of-type(2){
+        margin: 10px 0 10px 0;
+        font: normal normal 16px Poppins;
+        font-weight: 500;
+    }
+
+    .score p:nth-of-type(3){
+        margin-bottom: 10px;
+        font: normal normal 16px Poppins;
+        font-weight: 500;
+    }
+
+    .score .end-button{
+        height: 58px;
+        margin-bottom: 0;
+    }
+
+    .score .end-button p{
+        font: normal normal 500 15px/24px Poppins;
+    }
+
+    .score p a, .score td a {
+        margin-left: 10px;
+    }
+
+    .score table{
+        height: 150px;
+    }
+
+    .score label{
+        font: normal normal 15px Poppins;
+        font-weight: 400;
+    }
+    .next-page{
+        display: flex;
+        align-items: center;
+        margin: 0 0 15px 0px
+    }
+
+    .score span, .score a{
+        color: #E1B9B5;
+    }
+
+    .score .images img, .score-round{
+        display: none;
+    }
+
+    .button-nps{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .d-none{
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 885px) and (max-width: 1280px){
+    body {
+        max-width: 1280px;
+        margin: 0;
+    }
+
+    .container{
+        max-width: 1280px;
+    }
+
+    .padding {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .first-page {
+        max-width: 1280px;
+        height: 850px;
+    }
+    
+    header a:first-of-type{
+        margin-right: 10px;
+    }
+
+    .logo{
+        margin-right: 400px;
+    }
+
+    header a{
+        text-align: center;
+        width: 100%;
+    }
+    
+
+    /* Pierwsza strona */
+    .round{
+        margin-top: 70px;
+    }
+
+    /* Druga strona */
+
+    .second-page{
+        height: auto;
+    }
+
+    .card h3{
+        font-size: 23px;
+    }
+
+    .second-page a{
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+
+    /* Trzecia strona */
+    .third-page input{
+        margin-top: 0;
+    }
+
+    .third-page {
+        padding-bottom: 25px;
+        max-width: 1280px;
+        height: auto;
+    }
+
+    .third-page .box{
+        width: 315px;
+    }
+
+    .third-page .box:last-of-type{
+        margin-right: 12px;
+    }
+
+    .third-page .boxes {
+        margin-right: 15px;
+    }
+
+    /* Stopka */
+
+    footer{
+        padding: 25px;
+    }
+
+    /* Modale */
+
+    .container-modal{
+        display: grid;
+        position: unset;
+        padding: 25px 150px;
+        max-width: 1280px;
+        max-height: 100vh;
+        width: auto;
+    }
+
+    .modal-logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        margin-right: 0px;
+    }
+
+    .answer img{
+        z-index: 1;
+    }
+
+    .answer p{
+        z-index: 2;
+    }
+
+    .modal-content{
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        position: unset;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .modal-content h2{
+        color: #2D635A;
+        font: normal normal normal 28px Abril Fatface;
+    }
+
+    .modal-content h3{
+        color: #E1B9B5;
+        font: normal normal 600 26px/25px Poppins;
+    }
+
+    .h3-margin{
+        margin-top: 10px;
+        margin-bottom: 12px;
+    }
+
+    .modal-content h4{
+        font: normal normal  22px/22px Poppins;
+        margin-bottom: 28px;
+    }
+
+    .answer input{
+        width: 95%;
+    }
+
+    .buttons{
+        position: relative;
+        margin-top: 25px;
+    }
+
+    .back{
+        width: 90px;
+        height: 19px;
+    }
+
+    .alert-one, .alert-two, .alert-three{
+        position: absolute;
+        width: 100%;
+        font-size: 15px;
+        right: 35px;
+    }
+    /* Kolejny modal */
+    .score{
+        max-width: 1280px;
+        width: 100%;
+        padding-bottom: 0px;
+    }
+
+    .score h3{
+        font: normal normal normal 26px Poppins;
+        margin-bottom: 10px;
+    }
+
+    .score h4{
+        font: normal normal 24px Poppins;
+        margin-bottom: 10px;
+        width: 50%;
+        height: 55px;
+
+    }
+
+    .score .par{
+        height: 35px;
+        font: normal bold 16px Poppins;
+        margin-bottom: 10px;
+    }
+
+    .score p:nth-of-type(2){
+        margin: 10px 0 10px 0;
+        font: normal normal 16px Poppins;
+        font-weight: 500;
+    }
+
+    .score p:nth-of-type(3){
+        margin-bottom: 10px;
+        font: normal normal 16px Poppins;
+        font-weight: 500;
+    }
+
+    .score .end-button{
+        height: 58px;
+        margin-bottom: 0;
+    }
+
+    .score .end-button p{
+        font: normal normal 500 19px/24px Poppins;
+    }
+
+    .score p a, .score td a {
+        margin-left: 10px;
+    }
+
+    .score table{
+        height: 150px;
+    }
+
+    .score label{
+        font: normal normal 16px Poppins;
+        font-weight: 400;
+    }
+    .next-page{
+        display: flex;
+        align-items: center;
+        margin: 0 0 15px 0px
+    }
+
+    .score span, .score a{
+        color: #E1B9B5;
+    }
+
+    .score-round{
+        top: 150px;
+        right: 210px;
+    }
+
+    .score .images img:first-of-type{
+        top: 220px;
+        right: 372px;
+    }
+
+    .score .images img:nth-of-type(2){
+        top: 235px;
+        right: 263px;
+    }
+
+    .score .images img:nth-of-type(3){
+        top: 292px;
+        right: 168px;
+    }
+
+    .button-nps{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .d-none{
+        display: none !important;
     }
 }
